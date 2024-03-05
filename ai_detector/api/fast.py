@@ -3,7 +3,7 @@
 #from packagename.main import predict
 import pandas as pd
 import numpy as np
-import cv2
+import tensorflow as tf
 from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.responses import Response
@@ -42,10 +42,11 @@ async def receive_image(img: UploadFile=File(...)):
     ### Receiving and decoding the image
     contents = await img.read()
 
-    nparr = np.fromstring(contents, np.uint8)
-    cv2_img = cv2.imdecode(nparr, cv2.IMREAD_COLOR) # type(cv2_img) => numpy.ndarray
+    #nparr = np.fromstring(contents, np.uint8)
+    #cv2_img = cv2.imdecode(nparr, cv2.IMREAD_COLOR) # type(cv2_img) => numpy.ndarray
+    tensor_image = tf.io.decode_image(contents)
 
     ### Do cool stuff with your image.... For example face detection
     return {
-        'size of the array':len(cv2_img)
+        'size of the array':len(tensor_image.shape)
         }

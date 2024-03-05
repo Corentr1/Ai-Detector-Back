@@ -19,7 +19,7 @@ FROM python:3.10
 COPY packagename packagename
 COPY /ai_detector/api api
 COPY scripts scripts
-COPY requirements_test_api.txt requirements_docker.txt
+COPY requirements.txt requirements_docker.txt
 COPY setup.py setup.py
 #COPY credentials.json credentials.json
 
