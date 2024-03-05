@@ -1,4 +1,5 @@
 # data science
+wheel
 numpy
 pandas
 
@@ -6,13 +7,15 @@ pandas
 # scikit-learn
 
 # Install the correct TensorFlow version
-# Uncomment if you use TensorFlow
-# tensorflow~=2.13    # For both Intel and Apple silicon
+tensorflow~=2.13    # For both Intel and Apple silicon
+
+
 
 # Google Cloud
 google-cloud-storage
 
 python-dotenv
+python-multipart
 
 # API
 fastapi
