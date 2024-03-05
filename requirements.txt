@@ -17,3 +17,9 @@ python-dotenv
 # API
 fastapi
 uvicorn
+
+#Jupyter
+jupyter
+
+#Data sets
+datasets
