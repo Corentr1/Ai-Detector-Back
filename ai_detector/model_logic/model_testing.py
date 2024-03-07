@@ -31,17 +31,17 @@ def plot_history(history, title='', axs=None, exp_name=""):
     plt.show()
     return (ax1, ax2)
 
-def save_model_to_GCS():
+# def save_model_to_GCS():
 
-    storage_filename = "####"
-    local_filename = "####"
+#     storage_filename = "####"
+#     local_filename = "####"
 
-    client = storage.Client()
-    bucket = client.bucket(BUCKET_NAME)
-    blob = bucket.blob(storage_filename)
-    blob.upload_from_filename(local_filename)
+#     client = storage.Client()
+#     bucket = client.bucket(BUCKET_NAME)
+#     blob = bucket.blob(storage_filename)
+#     blob.upload_from_filename(local_filename)
 
-    print("Model saved to GCS")
+#     print("Model saved to GCS")
 
 def initialize_model(input_shape: tuple) -> Model:
     """
@@ -128,9 +128,9 @@ if __name__ == "__main__":
     # create train data
     X = []
     y = []
-    blobbe_fake = storage_client.list_blobs(BUCKET_NAME,
-                                            prefix="archive/train/FAKE",
-                                            max_results=500)
+    blobbe_fake = storage_client.list_blobs(BUCKET_NAME_FAKE,
+                                            prefix="IF-CC1M",
+                                            max_results=5)
     for blob in blobbe_fake:
         string_out = blob.download_as_bytes()
         array_tensor = tf.convert_to_tensor(string_out)
@@ -139,9 +139,9 @@ if __name__ == "__main__":
         y.append(1)
 
 
-    blobbe_real = storage_client.list_blobs(BUCKET_NAME,
-                                            prefix="archive/train/REAL",
-                                            max_results=500)
+    blobbe_real = storage_client.list_blobs(BUCKET_NAME_REAL,
+                                            prefix="extracted",
+                                            max_results=5)
     for blob in blobbe_real:
         string_out = blob.download_as_bytes()
         array_tensor = tf.convert_to_tensor(string_out)
@@ -161,19 +161,19 @@ if __name__ == "__main__":
     model = compile_model(model, learning_rate=0.0005)
 
     # train the model
-    model, history = train_model(
-        model,
-        X_train,
-        y_train,
-        batch_size=50,
-        patience=5,
-        validation_data=[X_val, y_val], # overrides validation_split
-        #validation_split=0.3,
-        epochs=40)
+    # model, history = train_model(
+    #     model,
+    #     X_train,
+    #     y_train,
+    #     batch_size=50,
+    #     patience=5,
+    #     validation_data=[X_val, y_val], # overrides validation_split
+    #     #validation_split=0.3,
+    #     epochs=40)
 
-    print("model trained")
-    plot_history(history)
+    # print("model trained")
+    # plot_history(history)
 
-    if SAVE_TO_GCS:
-        # save the best model to GCS
-        save_model_to_GCS()
+    # if SAVE_TO_GCS:
+    #     # save the best model to GCS
+    #     save_model_to_GCS()
