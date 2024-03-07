@@ -213,3 +213,20 @@ def mlflow_run(func):
 
         return results
     return wrapper
+
+def load_cifake_dataset():
+    storage_client = storage.Client()
+
+    # Note: Client.list_blobs requires at least package version 1.17.0.
+    bucket = storage_client.get_bucket(BUCKET_NAME)
+
+    blobbe = bucket.blob(f"archive/train/fake/1000 (10).jpg")
+
+    string_out = blobbe.download_as_bytes()
+
+    print(string_out)
+
+if __name__ == "__main__":
+    text = input("Running registry.py ...")
+    print(text)
+    load_cifake_dataset()

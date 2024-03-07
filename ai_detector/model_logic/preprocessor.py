@@ -7,7 +7,6 @@ from sklearn.pipeline import make_pipeline
 from sklearn.compose import ColumnTransformer, make_column_transformer
 from sklearn.preprocessing import OneHotEncoder, FunctionTransformer
 
-
 def preprocess_features(X: pd.DataFrame) -> np.ndarray:
     def create_sklearn_preprocessor() -> ColumnTransformer:
         """
