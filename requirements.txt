@@ -20,3 +20,9 @@ python-multipart
 # API
 fastapi
 uvicorn
+
+#Jupyter
+jupyter
+
+#Data sets
+datasets
