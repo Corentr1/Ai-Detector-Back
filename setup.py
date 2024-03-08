@@ -15,7 +15,7 @@ if os.path.isfile('requirements_dev.txt'):
     requirements.extend([x.strip() for x in content if 'git+' not in x])
 
 
-setup(name='ai_detector',
+setup(name='ai-detector',
       version="0.0.1",
       description="Project Description",
       packages=find_packages(),
@@ -23,5 +23,5 @@ setup(name='ai_detector',
       test_suite='tests',
       # include_package_data: to install data from MANIFEST.in
       include_package_data=True,
-      # scripts=['scripts/packagename-run'],
+      # scripts=['scripts/ai-detector-run'],
       zip_safe=False)
