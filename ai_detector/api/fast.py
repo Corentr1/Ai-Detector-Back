@@ -10,7 +10,10 @@ from starlette.responses import Response
 import mlflow
 from ai_detector.model_logic.model import initialize_model, compile_model, train_model, evaluate_model
 from ai_detector.params import *
+from ai_detector.model_logic.registry import load_model
+
 app = FastAPI()
+app.state.model = load_model()
 
 app.add_middleware(
     CORSMiddleware,
@@ -112,18 +115,18 @@ async def get_prediction(img: UploadFile=File(...)):
         }
 
 
-@app.post('/test_model')
+@app.get('/test_model')
 def test_model():
 
-    mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
+    # mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
 
-    # Get the specific version of the model
-    model_version = 2
-    model_uri = f"models:/{MODEL_NAME}/{model_version}"
+    # # Get the specific version of the model
+    # model_version = 2
+    # model_uri = f"models:/{MODEL_NAME}/{model_version}"
 
-    # Load the model
-    model = mlflow.pyfunc.load_model(model_uri)
+    # # Load the model
+    # model = mlflow.pyfunc.load_model(model_uri)
 
     return {
-        'size of the array': "test"
+        'size of the array': app.state.model.metadata
         }
