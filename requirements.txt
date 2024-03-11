@@ -9,7 +9,9 @@ pandas
 # Install the correct TensorFlow version
 tensorflow~=2.13    # For both Intel and Apple silicon
 
-
+# Shap
+shap
+opencv-python
 
 # Google Cloud
 google-cloud-storage
