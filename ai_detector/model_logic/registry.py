@@ -95,12 +95,13 @@ def load_model():
 
     mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
     client = MlflowClient()
-    model_versions = client.get_latest_versions(name=MODEL_NAME)
+    model_versions = client.get_latest_versions(name=MODEL_NAME, stages=["Production"])
     model_uri = model_versions[0].source
+    # breakpoint()
 
-    model = mlflow.tensorflow.load_model(model_uri=model_uri)
+    # model = mlflow.tensorflow.load_model(model_uri=model_uri)
     # mlflow.pyfunc.get_model_dependencies(model_uri)
-    # model = mlflow.pyfunc.load_model(model_uri)
+    model = mlflow.pyfunc.load_model(model_uri)
     #print(model)
 
 
