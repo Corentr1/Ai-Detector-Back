@@ -12,8 +12,8 @@ GCP_REGION = os.environ.get("GCP_REGION")
 #BQ_REGION = os.environ.get("BQ_REGION")
 BUCKET_NAME_FAKE = os.environ.get("BUCKET_NAME_FAKE")
 BUCKET_NAME_REAL = os.environ.get("BUCKET_NAME_REAL")
-BUCKET_NAME_FAKE_SAMPLE = os.environ.get("BUCKET_NAME_FAKE_SAMPLE")
-BUCKET_NAME_REAL_SAMPLE = os.environ.get("BUCKET_NAME_REAL_SAMPLE")
+
+BUCKET_NAME = os.environ.get("BUCKET_NAME")
 
 # INSTANCE = os.environ.get("INSTANCE")
 MLFLOW_TRACKING_URI = os.environ.get("MLFLOW_TRACKING_URI")
