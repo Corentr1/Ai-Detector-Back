@@ -7,7 +7,7 @@ pandas
 # scikit-learn
 
 # Install the correct TensorFlow version
-tensorflow~=2.13    # For both Intel and Apple silicon
+tensorflow==2.15    # For both Intel and Apple silicon
 
 
 
@@ -26,3 +26,7 @@ jupyter
 
 #Data sets
 datasets
+
+#MLFLOW
+mlflow
+colorama
